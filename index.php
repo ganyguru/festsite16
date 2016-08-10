@@ -10,8 +10,8 @@ if(!defined('__PRAGYAN_CMS'))
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Festember 2015</title>
-	<link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<title>Festember 2016</title>
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
       <link type="text/css" rel="stylesheet" href="<?php echo $TEMPLATEBROWSERPATH; ?>/assets/css/materialize.min.css"  media="screen,projection"/>
 	<link rel="stylesheet" type="text/css" href="<?php echo $TEMPLATEBROWSERPATH; ?>/assets/css/style.css">
 	
@@ -38,7 +38,7 @@ if(!defined('__PRAGYAN_CMS'))
 		</li>
 		<li><a href="contacts">Contacts</a>
 		</li>
-	</ul> <a href="#" data-activates="slide-out" class="button-collapse" style="display:block !important;"><i class="material-icons" style="color:white;opacity:0.7">menu</i></a> </nav>
+	</ul> <a href="#" data-activates="slide-out" class="button-collapse" style="position:fixed;display:block !important;"><i class="material-icons" style="color:white;opacity:0.7">menu</i></a> </nav>
 
 <script type="text/javascript">
 	
