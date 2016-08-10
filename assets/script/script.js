@@ -580,7 +580,8 @@ function checkDragon()
 	if($("#hero-block").offset().left+140> $(".dhead").offset().left)
 	{
 		$("#hero-block").fadeOut();
-		
+		clearInterval(salpi);
+		clearInterval(sangili);
 		canScrollOrSwipe=false;
 		savapatti();
 	}
@@ -689,6 +690,7 @@ function savapatti()
 	{
 		$($(".black")[i]).addClass("black"+(i+1));
 	}
+	/*
 	 $("#loading").animate({
        backgroundColor:"#ffe473"
     }, { duration: 7000, queue: false });
@@ -705,6 +707,7 @@ function savapatti()
 	 $("#desertcloud").css({"left":$("#container").width()+"px"});
 	 $("#desertcloud").css({"opacity":0});
 	 $("#desertcloud").fadeIn();
+	 */
 	 clearInterval(salpi);
 	 clearInterval(sangili);
 		var inter=setInterval(function(){
