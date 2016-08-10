@@ -223,6 +223,8 @@ function checkHole()
 }
 function eggmunda()
 {
+	clearInterval(salpi);
+	clearInterval(sangili);
 	var inter=setInterval(function(){
 			if($(".wegg").offset().left>10)
 			{
@@ -365,6 +367,72 @@ setElementProperties();
 
 
 
+}
+
+var salpi;
+var sangili;
+
+ $(".mobilecontrolright").bind('touchstart mousedown', function(){
+       salpi=setInterval(rightactions,1);
+    }).bind('touchend mouseup', function(){
+        clearInterval(salpi);
+        clearInterval(sangili);
+        checkcounter();
+    });
+
+ $(".mobilecontrolleft").bind('touchstart mousedown', function(){
+       sangili=setInterval(leftactions,1);
+    }).bind('touchend mouseup', function(){
+    	clearInterval(salpi);
+        clearInterval(sangili);
+        checkcounter();
+    });
+
+
+function leftactions()
+{
+	RightandLeftedge()
+		
+		if(checkobstacle(-1,0)==1 && canScrollOrSwipe==1)
+			{heroback();
+			checkfall();
+			if(boatified!=1)
+			MoveHeroBack();
+			if(mummified!=1)
+				checkDragon();
+			if(boatified!=1)
+				checkBoat();
+			if(kaakafied!=1)
+				checkKaaka();
+			
+			backtransitions();
+		}
+
+}
+
+function rightactions()
+{
+
+    RightandLeftedge()
+		finalcheck(1);
+		if(checkobstacle(1,0)==1 && canScrollOrSwipe==1 && end==0)
+			{herofront();
+			checkfall();
+			if(boatified!=1)
+			MoveHeroFront();
+			if(mummified!=1)
+				checkDragon();
+			if(boatified!=1)
+				checkBoat();
+			if(kaakafied!=1)
+				checkKaaka();
+			if(football!=1)
+				checkBall();
+			if(manhole!=1)
+				checkHole();
+			fronttransitions();
+		}
+	
 }
 function checkcounter()
 {
@@ -535,6 +603,8 @@ function startboat()
 		$("#hero-block").stop().animate({bottom:parseInt($("#hero-block").css("bottom"),10)-66},200,function(){});
 	});
 	boatified=1;
+	clearInterval(salpi);
+	clearInterval(sangili);
 	var inter=setInterval(function(){
 			if($(".boat").offset().left>10)
 			{
@@ -635,6 +705,8 @@ function savapatti()
 	 $("#desertcloud").css({"left":$("#container").width()+"px"});
 	 $("#desertcloud").css({"opacity":0});
 	 $("#desertcloud").fadeIn();
+	 clearInterval(salpi);
+	 clearInterval(sangili);
 		var inter=setInterval(function(){
 			if($(".soot").offset().left+700>20)
 			{

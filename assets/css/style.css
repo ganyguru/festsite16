@@ -570,6 +570,38 @@ body {
   height: 100%;
   overflow: hidden;
 }
+.mobilecontrolleft
+{
+  background: rgba(255,255,255,0.4);
+  width: 50px;
+  height: 50px;
+  border-radius: 100%;
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  text-align: center;
+  font-size: 30px;
+  z-index: 999999;
+  color: #000;
+  line-height: 45px;
+
+}
+.mobilecontrolright
+{
+  background: rgba(255,255,255,0.4);
+  width: 50px;
+  height: 50px;
+  border-radius: 100%;
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  font-size: 30px;
+  text-align: center;
+  z-index: 999999;
+  color: #000;
+  line-height: 45px;
+
+}
 #hero
 {
   position: relative;

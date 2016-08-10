@@ -203,7 +203,8 @@ if(!defined('__PRAGYAN_CMS'))
 
 
 	</div>
-
+<div class="mobilecontrolleft">&#9666;</div>
+<div class="mobilecontrolright">&#9656;</div>
 </div>
 <script type="text/javascript" src="<?php echo $TEMPLATEBROWSERPATH; ?>/assets/script/detect-browser-device.js"></script>
 	<script type="text/javascript" src="<?php echo $TEMPLATEBROWSERPATH; ?>/assets/script/jquery.js"></script>
