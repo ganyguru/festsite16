@@ -602,7 +602,7 @@ function savapatti()
        backgroundColor:"white"
     }, { duration: 3000, queue: false });
 	 	var inter=setInterval(function(){
-			if($(".soot").offset().left+700>20)
+			if($(".opentomb").offset().left>$(".opentomb").width()+5)
 			{
 				
 					

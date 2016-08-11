@@ -610,6 +610,25 @@ body {
   line-height: 45px;
 
 }
+.mobilecontrolleft img
+{
+  width: 20px;
+  margin-top: 15px;
+  
+        -moz-transform: scaleX(-1);
+        -o-transform: scaleX(-1);
+        -webkit-transform: scaleX(-1);
+        transform: scaleX(-1);
+        filter: FlipH;
+        -ms-filter: "FlipH";
+
+}
+.mobilecontrolright img
+{
+  width: 20px;
+  margin-top: 15px;
+  
+}
 #hero
 {
   position: relative;
