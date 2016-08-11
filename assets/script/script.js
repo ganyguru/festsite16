@@ -24,6 +24,7 @@ var page1;
 var obstaclestartindex=-1;
 var obstacleendindex=-1;
 var heroforward=0;
+var herowidth=75;
 var contactHorizontalDistance;
 var lengthDiv=document.getElementById("layer-4");
 var page2;
@@ -47,19 +48,9 @@ var currentobstacles=new Array();
 var sandi=0;
 mgate2=1;
 var h=60;
-var heroInterval;
-var touchCurrentX = 0;
-var slider=0;
-var contactDiv=document.getElementById('contact');
-var contactGround=document.getElementById('ground11');
-var dinoInterval;
-var canScrollOrSwipe;
-var dinoground1=document.getElementById('ground1');
+
 disableScrollOrSwipe();
- clearInterval(heroInterval);
-  clearInterval(dinoInterval);
- var grounddiv = document.getElementById("groundlow");
- var anim=0;
+ 
 var deltaPageVerticalPosition = 0;
 var containerDiv=document.getElementById('container');
 	var pageDiv=document.getElementById('page');
@@ -137,9 +128,10 @@ KeyboardController({
 	37 : function(){
 		RightandLeftedge()
 		
-		if(checkobstacle(-1,0)==1 && canScrollOrSwipe==1)
-			{heroback();
-			checkfall();
+		//if(checkobstacle(-1,0)==1 && canScrollOrSwipe==1)
+		//	{heroback();
+			//checkfall();
+			heroback();
 			if(boatified!=1)
 			MoveHeroBack();
 			if(mummified!=1)
@@ -150,7 +142,7 @@ KeyboardController({
 				checkKaaka();
 			
 			backtransitions();
-		}
+		//}
 
 
 	},
@@ -158,10 +150,12 @@ KeyboardController({
 	39 : function(){
 		RightandLeftedge()
 		finalcheck(1);
-		if(checkobstacle(1,0)==1 && canScrollOrSwipe==1 && end==0)
-			{herofront();
-			checkfall();
-			if(boatified!=1)
+		//if(checkobstacle(1,0)==1 && canScrollOrSwipe==1 && end==0)
+			//{
+			//checkfall();
+			if(end==0)
+			herofront();
+			if(boatified!=1 && end==0)
 			MoveHeroFront();
 			if(mummified!=1)
 				checkDragon();
@@ -174,15 +168,76 @@ KeyboardController({
 			if(manhole!=1)
 				checkHole();
 			fronttransitions();
-		}
-	},
-	
-	32: function(){
-		RightandLeftedge()
-	herojump();
-	
+		//}
 	}},1);
 
+
+
+var salpi;
+var sangili;
+
+ $(".mobilecontrolright").bind('touchstart mousedown', function(){
+       salpi=setInterval(rightactions,1);
+    }).bind('touchend mouseup', function(){
+        clearInterval(salpi);
+        clearInterval(sangili);
+        checkcounter();
+    });
+
+ $(".mobilecontrolleft").bind('touchstart mousedown', function(){
+       sangili=setInterval(leftactions,1);
+    }).bind('touchend mouseup', function(){
+    	clearInterval(salpi);
+        clearInterval(sangili);
+        checkcounter();
+    });
+
+
+
+function leftactions()
+{
+    RightandLeftedge()
+        
+        heroback();          	
+            	
+            if(boatified!=1)
+            MoveHeroBack();
+            if(mummified!=1)
+                checkDragon();
+            if(boatified!=1)
+                checkBoat();
+            if(kaakafied!=1)
+                checkKaaka();
+            
+            backtransitions();
+        
+
+}
+
+function rightactions()
+{
+
+    RightandLeftedge()
+        finalcheck(1);
+        if(end==0)
+            herofront();
+            
+            if(boatified!=1)
+            MoveHeroFront();
+            if(mummified!=1)
+                checkDragon();
+            if(boatified!=1)
+                checkBoat();
+            if(kaakafied!=1)
+                checkKaaka();
+            if(football!=1)
+                checkBall();
+            if(manhole!=1)
+                checkHole();
+            fronttransitions();
+        
+    
+}
 
 function finalcheck(i)
 {
@@ -200,7 +255,7 @@ if(i>0)
 
 function checkBall()
 {
-	if($("#hero-block").offset().left+75>$(".wball").offset().left)
+	if($("#hero-block").offset().left+herowidth>$(".wball").offset().left)
 	{
 		football=1;
 		$(".wball").animate({left:parseInt($(".whole1").css("left"),10)+0.5*$(".whole1").width()},1000,function(){
@@ -210,7 +265,7 @@ function checkBall()
 }
 function checkHole()
 {
-	if($("#hero-block").offset().left+75>$(".whole1").offset().left+$(".whole1").width()/2-1)
+	if($("#hero-block").offset().left+herowidth>$(".whole1").offset().left+$(".whole1").width()/2-1)
 	{
 		manhole=1;
 		canScrollOrSwipe=false;
@@ -223,8 +278,6 @@ function checkHole()
 }
 function eggmunda()
 {
-	clearInterval(salpi);
-	clearInterval(sangili);
 	var inter=setInterval(function(){
 			if($(".wegg").offset().left>10)
 			{
@@ -287,12 +340,8 @@ function loadingout()
 	$("#farcloud").appendTo(".sky1");
 	$("#nearcloud").appendTo(".sky1");
 	$("#sun").appendTo(".sky1");
-	$("#flight").stop().animate({top:"-500px"},1500,function(){});
-	setTimeout(function(){
-		
-		
-		
-			
+	$("#flight").stop().animate({top:"-500px"},1500,function(){
+
 		$("#farcloud").removeClass();
 		$("#nearcloud").removeClass();	
 		$("#farcloud").addClass("loading2");
@@ -306,28 +355,12 @@ function loadingout()
 			setTimeout(function(){
 				$("#hero-block").show();
 			},540);
-			pageVerticalPosition=0;
-previousPageVerticalPosition=0;
-	CreateDivs();
-	setPageHeight();
-	
-	dinorun=0;
-	run=1;
-	//orientContact();
-	RightandLeftedge();
-	
-makePageScrollable();
-addObstacles();
-selectedObstacle=$(obstacles[0]);
-for(i=0;i<obstacles.length;i++)
-currentobstacles.push($(obstacles[i]));
-
-		setElementProperties();
+			
+	//
 
 
+	});
 	
-		
-	},2000);
 }
 
 
@@ -335,7 +368,17 @@ currentobstacles.push($(obstacles[i]));
 
 window.onload = function()
 {
-	
+
+	herowidth=0.7142*$("#hero-block").height();
+	$("#hero").css({"height":$("#hero-block").height()+"px","width":0.7142*$("#hero-block").height()+"px"});
+	console.log($("#hero").height());
+	$("#hero").css({"background-size":12*$("#hero").width()+"px "+2*$("#hero").height()+"px"});
+	$(".hero-block").css({"margin-left":-1*$("#hero").width+"px"});
+	for(m=0;m<=11;m++)
+	{
+		$(".fhero"+(m+1)).css({"background-position":-1*(m+1)*$("#hero").width()+"px 0px !important"});
+		$(".bhero"+(12-m)).css({"background-position":-1*(m+1)*$("#hero").width()+"px "+-1*$("#hero").height()+"px !important"});
+	}
 	setTimeout(function(){
 		loadingout();
 		
@@ -344,95 +387,20 @@ window.onload = function()
 	{
 		initTouchEvents();
 	}
-
-pageVerticalPosition=0;
+		pageVerticalPosition=0;
 previousPageVerticalPosition=0;
 	CreateDivs();
-	setPageHeight();
+	
 	
 	dinorun=0;
 	run=1;
 	//orientContact();
-	RightandLeftedge();
 	
-makePageScrollable();
-addObstacles();
-selectedObstacle=$(obstacles[0]);
-for(i=0;i<obstacles.length;i++)
-currentobstacles.push($(obstacles[i]));
-window.scrollTo(0, 0);
-setElementProperties();
-
-
-
-
-
-}
-
-var salpi;
-var sangili;
-
- $(".mobilecontrolright").bind('touchstart mousedown', function(){
-       salpi=setInterval(rightactions,1);
-    }).bind('touchend mouseup', function(){
-        clearInterval(salpi);
-        clearInterval(sangili);
-        checkcounter();
-    });
-
- $(".mobilecontrolleft").bind('touchstart mousedown', function(){
-       sangili=setInterval(leftactions,1);
-    }).bind('touchend mouseup', function(){
-    	clearInterval(salpi);
-        clearInterval(sangili);
-        checkcounter();
-    });
-
-
-function leftactions()
-{
-	RightandLeftedge()
-		
-		if(checkobstacle(-1,0)==1 && canScrollOrSwipe==1)
-			{heroback();
-			checkfall();
-			if(boatified!=1)
-			MoveHeroBack();
-			if(mummified!=1)
-				checkDragon();
-			if(boatified!=1)
-				checkBoat();
-			if(kaakafied!=1)
-				checkKaaka();
-			
-			backtransitions();
-		}
-
-}
-
-function rightactions()
-{
-
-    RightandLeftedge()
-		finalcheck(1);
-		if(checkobstacle(1,0)==1 && canScrollOrSwipe==1 && end==0)
-			{herofront();
-			checkfall();
-			if(boatified!=1)
-			MoveHeroFront();
-			if(mummified!=1)
-				checkDragon();
-			if(boatified!=1)
-				checkBoat();
-			if(kaakafied!=1)
-				checkKaaka();
-			if(football!=1)
-				checkBall();
-			if(manhole!=1)
-				checkHole();
-			fronttransitions();
-		}
 	
+	makePageScrollable();
+
+		setElementProperties();
+		RightandLeftedge();
 }
 function checkcounter()
 {
@@ -444,6 +412,7 @@ function checkcounter()
 			$("#hero").addClass("fhero12");
 			herocounter=1;
 			dummyscroll1=0;
+			$("#hero").css({"background-position":-1*(11)*$("#hero").width()+"px "+0+"px"});	
 		}
 	}
 	else
@@ -451,7 +420,7 @@ function checkcounter()
 		if(herocounter>1)
 		{
 			$("#hero").removeClass();
-			$("#hero").addClass("bhero12");
+			$("#hero").css({"background-position":0*$("#hero").width()+"px "+-1*$("#hero").height()+"px"});	
 			herocounter=1;
 			dummyscroll2=0;
 		}
@@ -461,6 +430,7 @@ function checkcounter()
 
 function setElementProperties()
 {
+
 	$(".castle").css({"width":0.485*$(document).width()+"px","left":0.5*$(document).width()+"px"});
 	$(".chinawall").css({"width":1.971*$(".chinawall").height()+"px","left":0.1*$(document).width()+"px"});
 	$(".abovegrass").css({"width":2.803*$(".abovegrass").height()+"px","left":-5+"px"});
@@ -475,10 +445,11 @@ function setElementProperties()
 	$(".dtail").css({"width":2.59*$(".dtail").height()+"px","left":(parseInt($(".tower").css("left"),10)+0.828*$(".tower").width())+"px","bottom":0.16*$("#tower").height()+$(".dtail").height()+"px"});
 	$("#ash").css({"width":1.610*$("#ash").height()+"px","left":parseInt($(".tower").css("left"),10)+940+"px"});
 	$("#ash").hide();
-	$(".opentomb").css({"left":parseInt($(".tower").css("left"),10)+900+"px"});
-	$(".tombcover").css({"left":parseInt($(".tower").css("left"),10)+900-$(".tombcover").width()+"px"})
+	
 	$(".backwall").css({"width":23.93*$(".backwall").height(),"left":parseInt($(".towergrass").css("left"),10)+$(".towergrass").width()/2+"px","bottom":0.05*$("#container").height() -50+120-4+"px"});
 	$(".reception").css({"width":1.428*$(".reception").height(),"left":5.0626*$(".backwall").height()+parseInt($(".backwall").css("left"),10)+"px"});
+	$(".opentomb").css({"width":$(".opentomb").height()*0.566+"px","left":parseInt($(".reception").css("left"),10)-0.05*$("#container").height()-$(".opentomb").height()*0.566+"px"});
+	$(".tombcover").css({"width":$(".tombcover").height()*0.566+"px","left":parseInt($(".opentomb").css("left"),10)-$(".tombcover").width()+"px"})
 	$(".egyptwall").css({"width":4.626*$(".egyptwall").height(),"left":$(".reception").width()+parseInt($(".reception").css("left"),10)+10+"px"});
 	$(".obs1").css({"width":0.921*$(".obs1").height(),"left":parseInt($(".egyptwall").css("left"),10)+10+"px"});
 	$(".obs2").css({"width":3.296*$(".obs2").height(),"left":parseInt($(".obs1").css("left"),10)+$(".obs1").width()+"px"});
@@ -503,7 +474,8 @@ function setElementProperties()
 	$(".bgrass").css({"width":18.47*$(".bgrass").height()+"px","left":parseInt($(".briver1").css("left"),10)-0.2518*$("#container").height()+"px","bottom":parseInt($(".backwall").css("bottom"),10)-3+"px"});
 	$(".bmountain1").css({"width":3*$(".bmountain1").height()+"px","left":parseInt($(".lighttree").css("left"),10)-2+"px","bottom":parseInt($(".backwall").css("bottom"),10)+$(".backwall").height()-5+"px"});
 	$(".bmountain2").css({"width":3*$(".bmountain2").height()+"px","left":parseInt($(".bmountain1").css("left"),10)+0.333*$("#container").height()+"px","bottom":parseInt($(".backwall").css("bottom"),10)+$(".backwall").height()-5+"px"});
-	$(".wstep").css({"width":0.7117*$(".wstep").height()+"px","left":parseInt($(".briver1").css("left"),10)+$(".briver1").width()-0.1148*$("#container").height()+"px","bottom":0+"px"});
+	$(".wstep").css({"width":0.7117*$(".wstep").height()+"px","opacity":0,"left":parseInt($(".briver1").css("left"),10)+$(".briver1").width()-0.1148*$("#container").height()+"px","bottom":0+"px"});
+	$(".rrocks2").css({"width":6.067*$(".rrocks2").height()+"px","left":parseInt($(".briver1").css("left"),10)+$(".briver1").width()-6.067*0.5*$(".rrocks2").height()+"px","bottom":0+"px"});
 	$(".wgrass").css({"width":11.395*$(".wgrass").height()+"px","left":parseInt($(".wstep").css("left"),10)+$(".wstep").width()+"px","bottom":parseInt($(".backwall").css("bottom"),10)-3+"px"});
 	$(".eiffel").css({"width":0.737*$(".eiffel").height()+"px","left":parseInt($(".wgrass").css("left"),10)+0.163*$("#container").width()+"px","bottom":parseInt($(".backwall").css("bottom"),10)+"px"});
 	$(".wmountain1").css({"width":1.654*$(".wmountain1").height()+"px","left":parseInt($(".briver1").css("left"),10)+$(".briver1").width()+"px","bottom":parseInt($(".backwall").css("bottom"),10)+"px"});
@@ -532,23 +504,23 @@ function setElementProperties()
 	$(".fire").css({"background-position":"0px 0px"});
 	$(".fire").hide();
 	
-	$(".eyeline1").css({"left":parseInt($(".pharaoh").css("left"),10)+0.39*$(".pharaoh").width()+"px","bottom":parseInt($(".pharaoh").css("bottom"),10)-0.75*$(".pharaoh").height()+"px","width":0.063*$(".pharaoh").width()+"px","height":0.063*$(".pharaoh").width()+"px"});
-	$(".eyeline2").css({"left":parseInt($(".pharaoh").css("left"),10)+0.55*$(".pharaoh").width()+"px","bottom":parseInt($(".pharaoh").css("bottom"),10)-0.75*$(".pharaoh").height()+"px","width":0.063*$(".pharaoh").width()+"px","height":0.063*$(".pharaoh").width()+"px"});
+	$(".eyeline1").css({"left":parseInt($(".pharaoh").css("left"),10)+0.39*$(".pharaoh").width()+"px","bottom":parseInt($(".pharaoh").css("bottom"),10)+0.68*$(".pharaoh").height()+"px","width":0.063*$(".pharaoh").width()+"px","height":0.063*$(".pharaoh").width()+"px"});
+	$(".eyeline2").css({"left":parseInt($(".pharaoh").css("left"),10)+0.55*$(".pharaoh").width()+"px","bottom":parseInt($(".pharaoh").css("bottom"),10)+0.68*$(".pharaoh").height()+"px","width":0.063*$(".pharaoh").width()+"px","height":0.063*$(".pharaoh").width()+"px"});
 
 
 }
 
 function RightandLeftedge()
 {
-	var x = $(".hero-block").offset().left+1+75/2;
-	var y=$(".hero-block").offset().left+1+75/2
-	heroLeftEdge = Math.floor($(".hero-block").offset().left+1+75/2);
-	heroRightEdge = Math.ceil($(".hero-block").offset().left+75/2+75);
+	var x = $(".hero-block").offset().left+1+herowidth/2;
+	var y=$(".hero-block").offset().left+1+herowidth/2
+	heroLeftEdge = Math.floor($(".hero-block").offset().left+1+herowidth/2);
+	heroRightEdge = Math.ceil($(".hero-block").offset().left+herowidth/2+herowidth);
 }
 
 function fronttransitions()
 {
-	if($("#hero-block").offset().left+75>($(".pyramid3").offset().left+$(".pyramid3").width()+0.037*$("#container").height()) && trans1==0)
+	if($("#hero-block").offset().left+herowidth>($(".pyramid3").offset().left+$(".pyramid3").width()+0.037*$("#container").height()) && trans1==0)
 	{
 		trans1=1;
 		$("#loading").animate({
@@ -556,14 +528,14 @@ function fronttransitions()
     }, { duration: 3000, queue: false });
 	}
 	else
-	if($("#hero-block").offset().left+75>($(".bridge").offset().left+$(".bridge").width()+0.233*$("#container").height())&&trans2==0)
+	if($("#hero-block").offset().left+herowidth>($(".bridge").offset().left+$(".bridge").width()+0.233*$("#container").height())&&trans2==0)
 	{
 		trans2=1;
 		$("#loading").animate({
        backgroundColor:"#7bbdff"
     }, { duration: 3000, queue: false });
 	}
-	if($("#hero-block").offset().left+75>($(".rockfort").offset().left+$(".rockfort").width()+0.0518*$("#container").height())&&trans3==0)
+	if($("#hero-block").offset().left+herowidth>($(".rockfort").offset().left+$(".rockfort").width()+0.0518*$("#container").height())&&trans3==0)
 	{
 		trans3=1;
 		$("#loading").animate({
@@ -580,48 +552,20 @@ function checkDragon()
 	if($("#hero-block").offset().left+140> $(".dhead").offset().left)
 	{
 		$("#hero-block").fadeOut();
-		clearInterval(salpi);
-		clearInterval(sangili);
+		
 		canScrollOrSwipe=false;
 		savapatti();
 	}
 }
 function checkBoat()
 {
-	if($("#hero-block").offset().left+75> $(".boat").offset().left+0.5*$(".boat").width() && ($(".boat").offset().left+$(".boat").width()+3<$(".wstep").offset().left))
+	if($("#hero-block").offset().left+herowidth> $(".boat").offset().left+0.5*$(".boat").width() && ($(".boat").offset().left+$(".boat").width()+3<$(".wstep").offset().left))
 	{
 		
 		
 		//canScrollOrSwipe=false;
 		boatified=1;
 	}
-}
-function startboat()
-{
-	canScrollOrSwipe=false;
-	
-	$("#hero-block").stop().animate({bottom:parseInt($("#hero-block").css("bottom"),10)+50,left:$(".boat").offset().left+0.5*$(".boat").width()},500,function(){
-		$("#hero-block").stop().animate({bottom:parseInt($("#hero-block").css("bottom"),10)-66},200,function(){});
-	});
-	boatified=1;
-	clearInterval(salpi);
-	clearInterval(sangili);
-	var inter=setInterval(function(){
-			if($(".boat").offset().left>10)
-			{
-				//$(".boat").offset().left+$(".boat")+10<$(".wobstacle").offset().left
-				
-				layerautomove();
-				
-			}
-			else
-			{
-				clearInterval(inter);
-				canScrollOrSwipe=true;
-				//$("#hero-block").stop().animate({bottom:parseInt($("#hero-block").css("bottom"),10)+66,left:$(".wobstacle").offset().left+$(".wobstacle").width()+10},500,function(){
-				//$("#hero-block").stop().animate({bottom:0.05*$("#container").height()+40},200,function(){});
-			}
-		},0.1);
 }
 function checkKaaka()
 {
@@ -642,39 +586,11 @@ function kaakaflying()
 		$("kaaka").css({"background-position":"-"+2*$(".kaaka").width()+1+"px 0px"});
 		var eye = new DrawEye("eye1", "pupil1", parseInt($(".pharaoh").css("left"),10)+0.39*$(".pharaoh").width(), $("#container").height()-parseInt($(".pharaoh").css("bottom"),10)-0.75*$(".pharaoh").height(), 0.063*$(".pharaoh").width());
 		var eye = new DrawEye("eye2", "pupil2", parseInt($(".pharaoh").css("left"),10)+0.55*$(".pharaoh").width(), $("#container").height()-parseInt($(".pharaoh").css("bottom"),10)-0.75*$(".pharaoh").height(), 0.063*$(".pharaoh").width());
-
+		$(".eyeline1").hide();
+		$(".eyeline2").hide();
 	});
-	
-		/*var inter=setInterval(function(){
-			if($(".kaaka").offset().left+700>20)
-			{
-				
-				layerautomove();
-				
-			}
-			else
-			{
-				clearInterval(inter);
-				if(parseInt($(".black8").css("left"),10)>1000)
-				{
-					$(".tombcover").stop().animate({left:parseInt($(".opentomb").css("left"),10)+"px"},500,function(){
-					$(".tombcover").addClass("shake");
-					$(".opentomb").addClass("shake");
-					setTimeout(function(){
-						$(".tombcover").stop().animate({left:parseInt($(".tombcover").css("left"),10)-$(".opentomb").width()+"px"},500,function(){
-							$("#hero-block").show();
-							$("#hero-block").css({"left":$(".opentomb").offset().left+0.5*$(".opentomb").width()+"px"});
-							mummified=1;
-							canScrollOrSwipe=true;
-						});
-					},1600)
-				});
-				}
-				
-			}
-		},0.1);*/
-kaakafied=1;
-canScrollOrSwipe=true;
+	kaakafied=1;
+		canScrollOrSwipe=true;
 
 	
 }
@@ -690,27 +606,11 @@ function savapatti()
 	{
 		$($(".black")[i]).addClass("black"+(i+1));
 	}
-	/*
-	 $("#loading").animate({
-       backgroundColor:"#ffe473"
-    }, { duration: 7000, queue: false });
-	 $("#farcloud").animate({
-       opacity:"0"
-    }, { duration: 1000, queue: false });
-	 $("#nearcloud").animate({
-       opacity:"0"
-    }, { duration: 1000, queue: false });
+	 
 	 $("#sun").animate({
        backgroundColor:"white"
     }, { duration: 3000, queue: false });
-	 $("#desertcloud").show();
-	 $("#desertcloud").css({"left":$("#container").width()+"px"});
-	 $("#desertcloud").css({"opacity":0});
-	 $("#desertcloud").fadeIn();
-	 */
-	 clearInterval(salpi);
-	 clearInterval(sangili);
-		var inter=setInterval(function(){
+	 	var inter=setInterval(function(){
 			if($(".soot").offset().left+700>20)
 			{
 				
@@ -776,12 +676,14 @@ function MoveHeroBack()
 	
 	$("#hero").removeClass();
 
-	$("#hero").addClass("fhero"+herocounter);
+	$("#hero").css({"background-position":-1*(herocounter-1)*$("#hero").width()+"px "+0+"px"});	
 	
 
 }
 function MoveHeroFront()
 {
+	if(canScrollOrSwipe)
+	{
 
 		heroforward=1;
 		var pos=0;
@@ -807,9 +709,10 @@ function MoveHeroFront()
 				page2=pageVerticalPosition;*/
 	//console.log(herocounter);
 	
-	$("#hero").removeClass();
 
-	$("#hero").addClass("bhero"+herocounter);
+			$("#hero").css({"background-position":-1*(12-herocounter)*$("#hero").width()+"px "+-1*$("#hero").height()+"px"});	
+	
+}
 }
 function addObstacles()
 {
@@ -912,8 +815,9 @@ function moveLayers()
 {
 	for (var i=0; i<divArray.length; i++)
 		{
-			divArray[i].style.left = (-1 * speedArray[i] * pageVerticalPosition) + "px";
-			if(boatified==1 && i==4 && deltaPageVerticalPosition>0)
+	//	i=2;
+			divArray[i].style.left = (-1.2 * speedArray[i] * pageVerticalPosition) + "px";
+			if(boatified==1 && i==2 && deltaPageVerticalPosition>0)
 			{
 				$(heroDiv).css({'left':($(".boat").offset().left+0.5*$(".boat").width()+"px")});
 			}
@@ -983,11 +887,11 @@ function heroback()
 	if($(heroDiv).offset().left>-46)
 	{
 		if(boatified!=1)
-			$(heroDiv).css({'left':(heroDiv.offsetLeft+75-1)});
-		else if(boatified==1 && $(".boat").offset().left-10>$(".rrocks").offset().left+0.35*$(".rrocks").width())
+			$(heroDiv).css({'left':(heroDiv.offsetLeft-1)});
+		else if(boatified==1 && $(".boat").offset().left-10>$(".rrocks").offset().left)
 		{
 			$(".boat").css({'left':(parseInt($(".boat").css("left"),10)-1)});
-			$(heroDiv).css({'left':(heroDiv.offsetLeft+75-1)});
+			$(heroDiv).css({'left':(heroDiv.offsetLeft-1)});
 		}
 	}
 	else if(pageVerticalPosition>0)
@@ -1000,25 +904,23 @@ function heroback()
 }
 function herofront()
 {
+	if(canScrollOrSwipe==true)
+	{
 	if($(heroDiv).offset().left+$(heroDiv).width()+37.5<$("#container").width()/2)
 	{
 		if(boatified!=1)
-			$(heroDiv).css({'left':(heroDiv.offsetLeft+75+1)});
+			$(heroDiv).css({'left':(heroDiv.offsetLeft+1)});
 		else if(boatified==1)
 		{
 			$(".boat").css({'left':(parseInt($(".boat").css("left"),10)+1)});
-			$(heroDiv).css({'left':(heroDiv.offsetLeft+75+1)});
+			$(heroDiv).css({'left':(heroDiv.offsetLeft+1)});
 			if(($(".boat").offset().left+$(".boat").width()+3>$(".wstep").offset().left))
 			{
-				canScrollOrSwipe=false;
+				
 
 				boatified=0;
-				$(".briver3").fadeOut();
-				$(".briver2").fadeOut();
-				$(".briver1").fadeOut();
-				$(".boat").stop().animate({bottom:$("#container").height()*0.05+40+"px"},function(){
-					canScrollOrSwipe=true;
-				})
+				
+				
 			}
 		}
 	}
@@ -1029,6 +931,7 @@ function herofront()
 		pageVerticalPosition+=deltaPageVerticalPosition;
 		moveLayers();
 	}
+}
 }
 function layerautomove()
 {
@@ -1253,4 +1156,3 @@ var DrawEye = function(eyecontainer, pupil, eyeposx, eyeposy, eyer){
     pupil.css({left:xp, top:yp});    
   }, 1);
 };
-

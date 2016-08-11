@@ -68,21 +68,13 @@ if(!defined('__PRAGYAN_CMS'))
 		
 		<div class="castle"></div>
 	</div>
-	<div id="layer-2" class="layer">
-		
-		
 	
-	</div>
 	<div id="layer-3" class="layer">		
 	
 	<div class="chinawall"></div>
 	
 	</div>
-	<div id="layer-5" class="layer">
-		
-		
-	</div>
-	<div id="layer-7" class="layer">
+		<div id="layer-7" class="layer">
 	<div class="nitsky"></div>
 	<div class="rockfort"></div>
 	<a href="sponsors"><div class="blimp shake1"></div></a>
@@ -137,16 +129,7 @@ if(!defined('__PRAGYAN_CMS'))
 		<div id="ground">
 			<div class="ground1"></div>
 		</div>
-		<div class="river1 river1move">
-			
-		</div>
-		<div class="river2 river2move">
-			
-		</div>
-		<div class="dtail tailmove"></div>
-		<div class="tower"></div> 
-	<div class="dhead dragonmove"></div>
-	<div class="riverstone"></div>
+		
 	
 		<div class="bcastle"></div>
 		<div class="bridge"></div>
@@ -167,14 +150,24 @@ if(!defined('__PRAGYAN_CMS'))
 <a href="contacts"><div class="contacts"></div></a>
 <div class="opentomb"></div>
 	<div class="tombcover"></div>
-	<div class="obstacles obs1"></div>
-<div class="obstacles obs2"></div>
-<div class="obstacles obs3"></div>
+	<div class="obs1"></div>
+<div class="obs2"></div>
+<div class="obs3"></div>
 	<div class="hero-block  down" id="hero-block" style="display:none">
 			<div class="hero bhero1" id="hero">
 			</div>
 			
 </div>	
+<div class="river1 river1move">
+			
+		</div>
+		<div class="river2 river2move">
+			
+		</div>
+		<div class="dtail tailmove"></div>
+		<div class="tower"></div> 
+	<div class="dhead dragonmove"></div>
+	<div class="riverstone"></div>
 <div class="fire naranara"></div>
 
 <div class="boat"></div>
@@ -183,26 +176,14 @@ if(!defined('__PRAGYAN_CMS'))
 <div class="wballoon flightmove"></div>
 <div class="wball"></div>
 <div class="whole2"></div>
-
+<div class="rrocks2"></div>
 
 
 		<div class="egyptwall"></div>
 		
 	<div class="rrocks"></div>
 	</div>
-	<div id="layer-6" class="layer">
-		<div id="mountain-2"></div>
-		
-	</div>
 	
-	<div id="layer-4" class="layer">
-
-
-
-		
-
-
-	</div>
 <div class="mobilecontrolleft">&#9666;</div>
 <div class="mobilecontrolright">&#9656;</div>
 </div>
