@@ -603,17 +603,13 @@ function savapatti()
     }, { duration: 3000, queue: false });
 	 	var inter=setInterval(function(){
 			if($(".opentomb").offset().left>$(".opentomb").width()+5)
-			{
-				
-					
-				layerautomove();
-				
+			{						
+				layerautomove();				
 			}
 			else
 			{
 				clearInterval(inter);
-				if(parseInt($(".black8").css("left"),10)>1000)
-				{
+				
 
 					$(".tombcover").stop().animate({left:parseInt($(".opentomb").css("left"),10)+"px"},500,function(){
 					$(".tombcover").addClass("shake");
@@ -631,7 +627,7 @@ function savapatti()
 						});
 					},1600)
 				});
-				}
+				
 				
 			}
 		},0.1);
