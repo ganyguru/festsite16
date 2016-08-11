@@ -137,7 +137,7 @@ KeyboardController({
 			if(mummified!=1)
 				checkDragon();
 			if(boatified!=1)
-				checkBoat();
+				checkBoatBack();
 			if(kaakafied!=1)
 				checkKaaka();
 			
@@ -167,7 +167,7 @@ KeyboardController({
 				checkBall();
 			if(manhole!=1)
 				checkHole();
-			fronttransitions();
+			//fronttransitions();
 		//}
 	}},1);
 
@@ -209,7 +209,7 @@ function leftactions()
             if(kaakafied!=1)
                 checkKaaka();
             
-            backtransitions();
+           // backtransitions();
         
 
 }
@@ -272,6 +272,7 @@ function checkHole()
 		$("#hero-block").animate({"bottom":-1*$("#hero-block").height()+"px"},1000,function(){
 			$(".wegg").addClass("eggmove");
 			eggmunda();
+
 		});		
 		
 	}
@@ -291,17 +292,21 @@ function eggmunda()
 				clearInterval(inter);
 				
 				$(".wegg").stop().animate({bottom:parseInt($(".wegg").css("bottom"),10)+66},500,function(){
+
 					$(".wegg").stop().animate({bottom:parseInt($(".wegg").css("bottom"),10)-66},500,function(){
 						$(".brokeegg").show();
 						$(".brokeegg").css({"width":$(".brokeegg").height()*1.898+"px","left":parseInt($(".wegg").css("left"),10)+"px","bottom":parseInt($(".wegg").css("bottom"),10)+"px"});						
 						$(".wegg").hide();
 						$("#hero-block").show();
-
+						$(".whole1").hide();
+						$(".whole2").hide();
+			
 						$("#hero-block").css({"bottom":0.05*$("#container").height()+40+"px"})
 						
 						$("#hero-block").css({"left":$(".brokeegg").offset().left+0.5*$(".brokeegg").width()+"px"});
 						$("#hero-block").stop().animate({bottom:parseInt($("#hero-block").css("bottom"),10)+$(".brokeegg").height(),left:$("#hero-block").offset().left+0.35*$(".brokeegg").width()},1000,function(){
 							$("#hero-block").stop().animate({bottom:parseInt($("#hero-block").css("bottom"),10)-$(".brokeegg").height()+"px",left:$("#hero-block").offset().left+0.35*$(".brokeegg").width()},1000,function(){
+								
 								canScrollOrSwipe=true;
 							});
 						});
@@ -391,6 +396,13 @@ previousPageVerticalPosition=0;
 	makePageScrollable();
 
 		setElementProperties();
+		if(deviceName=="computer")
+		{
+			$(".mobilecontrolright").hide();
+			$(".mobilecontrolleft").hide();
+		}
+		if($("#container").width()/$("#container").height()<1)
+			$(".orientnotif").show();
 		RightandLeftedge();
 }
 function checkcounter()
@@ -440,7 +452,7 @@ function setElementProperties()
 	$(".backwall").css({"width":23.93*$(".backwall").height(),"left":parseInt($(".towergrass").css("left"),10)+$(".towergrass").width()/2+"px","bottom":0.05*$("#container").height() -50+120-4+"px"});
 	$(".reception").css({"width":1.428*$(".reception").height(),"left":5.0626*$(".backwall").height()+parseInt($(".backwall").css("left"),10)+"px"});
 	$(".opentomb").css({"width":$(".opentomb").height()*0.566+"px","left":parseInt($(".reception").css("left"),10)-0.05*$("#container").height()-$(".opentomb").height()*0.566+"px"});
-	$(".tombcover").css({"width":$(".tombcover").height()*0.566+"px","left":parseInt($(".opentomb").css("left"),10)-$(".tombcover").width()+"px"})
+	$(".tombcover").css({"width":$(".tombcover").height()*0.566+"px","left":parseInt($(".opentomb").css("left"),10)-$(".opentomb").width()+"px"})
 	$(".egyptwall").css({"width":4.626*$(".egyptwall").height(),"left":$(".reception").width()+parseInt($(".reception").css("left"),10)+10+"px"});
 	$(".obs1").css({"width":0.921*$(".obs1").height(),"left":parseInt($(".egyptwall").css("left"),10)+10+"px"});
 	$(".obs2").css({"width":3.296*$(".obs2").height(),"left":parseInt($(".obs1").css("left"),10)+$(".obs1").width()+"px"});
@@ -558,6 +570,16 @@ function checkBoat()
 		boatified=1;
 	}
 }
+function checkBoatBack()
+{
+	if($("#hero-block").offset().left+herowidth> $(".rrocks").offset().left+0.5*$(".rrocks").width() && ($("#hero-block").offset().left+$("#hero-block").width()+3<$(".wstep").offset().left) )
+	{		
+		boatified=1;
+	}
+	else
+		boatified=0;
+}
+
 function checkKaaka()
 {
 	if($("#hero-block").offset().left+92> $(".kaaka").offset().left)
@@ -621,6 +643,8 @@ function savapatti()
 						$(".tombcover").stop().animate({left:parseInt($(".tombcover").css("left"),10)-$(".opentomb").width()+"px"},500,function(){
 							$("#hero-block").show();
 							$("#hero-block").css({"left":$(".opentomb").offset().left+0.5*$(".opentomb").width()+"px"});
+							$("#hero-block").hide();
+							$("#hero-block").fadeIn();
 							mummified=1;
 							canScrollOrSwipe=true;
 							$(".fire").hide();
@@ -871,13 +895,14 @@ function detectPageVerticalPosition()
 }
 function heroback()
 {
-	if($(heroDiv).offset().left>-46)
+	if($(heroDiv).offset().left>$(".boat").width()/2)
 	{
 		if(boatified!=1)
 			$(heroDiv).css({'left':(heroDiv.offsetLeft-1)});
-		else if(boatified==1 && $(".boat").offset().left-10>$(".rrocks").offset().left)
+		else if(boatified==1 && $(".boat").offset().left-10>$(".rrocks").offset().left+0.5*$(".rrocks").width())
 		{
-			$(".boat").css({'left':(parseInt($(".boat").css("left"),10)-1)});
+			$("#hero").css({"background-position":-1*(12-herocounter)*$("#hero").width()+"px "+0*$("#hero").height()+"px"});	
+			$(".boat").css({'left':(parseInt($(".boat").css("left"),10)-1+"px")});
 			$(heroDiv).css({'left':(heroDiv.offsetLeft-1)});
 		}
 	}
@@ -886,6 +911,11 @@ function heroback()
 		deltaPageVerticalPosition=-1.8;
 		previousPageVerticalPosition=pageVerticalPosition;
 		pageVerticalPosition+=deltaPageVerticalPosition;
+		if(boatified==1 && $(".boat").offset().left-10>$(".rrocks").offset().left+0.5*$(".rrocks").width())
+			$(".boat").css({'left':(parseInt($(".boat").css("left"),10)-1.2+"px")});
+		else
+			boatified=0;
+
 		moveLayers();
 	}
 }
@@ -899,9 +929,11 @@ function herofront()
 			$(heroDiv).css({'left':(heroDiv.offsetLeft+1)});
 		else if(boatified==1)
 		{
+			$("#hero").css({"background-position":-1*(12-herocounter)*$("#hero").width()+"px "+-1*$("#hero").height()+"px"});	
+			
 			$(".boat").css({'left':(parseInt($(".boat").css("left"),10)+1)});
 			$(heroDiv).css({'left':(heroDiv.offsetLeft+1)});
-			if(($(".boat").offset().left+$(".boat").width()+3>$(".wstep").offset().left))
+			if(($(".boat").offset().left+$(".boat").width()>$(".wstep").offset().left+$(".wstep").width()/2))
 			{
 				
 

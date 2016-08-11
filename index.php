@@ -26,17 +26,17 @@ if(!defined('__PRAGYAN_CMS'))
 			</center>
 		</li>
 		
-		<li><a href="#">Events</a>
+		<li><a href="https://festember.com/16/home/events">Events</a>
 		</li>
-		<li><a href="highlights">Highlights</a>
+		<li><a href="https://festember.com/16/home/highlights">Highlights</a>
 		</li>
-		<li><a href="sponsors">Sponsors</a>
+		<li><a href="https://festember.com/16/home/sponsors">Sponsors</a>
 		</li>
-		<li><a href="games">Games</a>
+		<li><a href="https://festember.com/16/home/games">Games</a>
 		</li>
-		<li><a href="hospitality">Hospitality</a>
+		<li><a href="https://festember.com/16/home/hospitality">Hospitality</a>
 		</li>
-		<li><a href="contacts">Contacts</a>
+		<li><a href="https://festember.com/16/home/contacts">Contacts</a>
 		</li>
 	</ul> <a href="#" data-activates="slide-out" class="button-collapse" style="position:fixed;display:block !important;"><i class="material-icons" style="color:white;opacity:0.7">menu</i></a> </nav>
 
@@ -117,7 +117,7 @@ if(!defined('__PRAGYAN_CMS'))
 	
 	
 	
-	<a href="#"><div class="pharaoh"></div></a>
+	<a href="events"><div class="pharaoh"></div></a>
 	<div class="eyeline1"></div>
 	<div class="eyeline2"></div>
 <div class="kaaka"></div>
@@ -143,7 +143,7 @@ if(!defined('__PRAGYAN_CMS'))
 <div class="wtower2"></div>
 <div class="wgrass"></div>
 <a href="games"><div class="wegg"></div></a>
-<div class="brokeegg" style="display:none"></div>
+<a href="games"><div class="brokeegg" style="display:none"></div></a>
 <div class="store"></div>
 <a href="hospitality"><div class="reception"></div></a>
 <div id="eyelid"></div>
@@ -186,6 +186,13 @@ if(!defined('__PRAGYAN_CMS'))
 	
 <div class="mobilecontrolleft"></div>
 <div class="mobilecontrolright"></div>
+<div class="orientnotif">
+			<div id="supercenter">
+				<center>				
+				<h2> Change the orientation and refresh! </h2>
+				</center>
+			</div>
+		</div>
 </div>
 <script type="text/javascript" src="<?php echo $TEMPLATEBROWSERPATH; ?>/assets/script/detect-browser-device.js"></script>
 	<script type="text/javascript" src="<?php echo $TEMPLATEBROWSERPATH; ?>/assets/script/jquery.js"></script>
