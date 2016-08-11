@@ -4,7 +4,7 @@ body {
   margin: 8px;
   cursor: url(../image/pointer.png), auto;
   background: #7bbdff;
-    overflow-x:hidden;
+    overflow:hidden;
 }
 .cloud {
   position: absolute;

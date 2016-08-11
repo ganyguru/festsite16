@@ -15,7 +15,7 @@ if(!defined('__PRAGYAN_CMS'))
       <link type="text/css" rel="stylesheet" href="<?php echo $TEMPLATEBROWSERPATH; ?>/assets/css/materialize.min.css"  media="screen,projection"/>
 	<link rel="stylesheet" type="text/css" href="<?php echo $TEMPLATEBROWSERPATH; ?>/assets/css/style.css">
 	
-	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=0">
 </head>
 <body>
 <nav class="transparent noshadow z-depth-1" style="position:absolute;box-shadow:0 0 0 0;z-index:999999999;">

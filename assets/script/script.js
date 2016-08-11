@@ -383,19 +383,10 @@ window.onload = function()
 		loadingout();
 		
 	},2000);
-	if (deviceName != "computer")
-	{
-		initTouchEvents();
-	}
+	
 		pageVerticalPosition=0;
 previousPageVerticalPosition=0;
 	CreateDivs();
-	
-	
-	dinorun=0;
-	run=1;
-	//orientContact();
-	
 	
 	makePageScrollable();
 
