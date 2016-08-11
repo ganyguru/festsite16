@@ -184,8 +184,8 @@ if(!defined('__PRAGYAN_CMS'))
 	<div class="rrocks"></div>
 	</div>
 	
-<div class="mobilecontrolleft"><img src="<?php echo $TEMPLATEBROWSERPATH; ?>/assets/image/play.png"></div>
-<div class="mobilecontrolright"><img src="<?php echo $TEMPLATEBROWSERPATH; ?>/assets/image/play.png"></div>
+<div class="mobilecontrolleft"></div>
+<div class="mobilecontrolright"></div>
 </div>
 <script type="text/javascript" src="<?php echo $TEMPLATEBROWSERPATH; ?>/assets/script/detect-browser-device.js"></script>
 	<script type="text/javascript" src="<?php echo $TEMPLATEBROWSERPATH; ?>/assets/script/jquery.js"></script>
