@@ -117,9 +117,7 @@ if(!defined('__PRAGYAN_CMS'))
 	
 	
 	
-	<a href="events"><div class="pharaoh"></div></a>
-	<div class="eyeline1"></div>
-	<div class="eyeline2"></div>
+	
 <div class="kaaka"></div>
 	<div class="darktree"></div>
 	<div class="lighttree"></div>
@@ -146,13 +144,17 @@ if(!defined('__PRAGYAN_CMS'))
 <a href="games"><div class="brokeegg" style="display:none"></div></a>
 <div class="store"></div>
 <a href="hospitality"><div class="reception"></div></a>
-<div id="eyelid"></div>
+
 <a href="contacts"><div class="contacts"></div></a>
 <div class="opentomb"></div>
 	<div class="tombcover"></div>
 	<div class="obs1"></div>
 <div class="obs2"></div>
 <div class="obs3"></div>
+<a href="events"><div class="pharaoh"></div></a>
+        <div class="eyeline1"></div>
+        <div class="eyeline2"></div>
+	<div id="eyelid"></div>
 	<div class="hero-block  down" id="hero-block" style="display:none">
 			<div class="hero bhero1" id="hero">
 			</div>
