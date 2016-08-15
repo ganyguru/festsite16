@@ -36,7 +36,7 @@ body {
     top: 350px;
     text-align: center;
     height: calc( 100% - 350px);
-    overflow: scroll !important;
+    
     background:rgba(0,0,0,0.7);
     padding: 20px;
 }
@@ -51,6 +51,7 @@ body {
     width: 100%;
     min-height: 100%;
     z-index: 9999999;
+    overflow: scroll !important;
     height: auto;
     background: #EF6C00;
     padding-bottom: 40px;
