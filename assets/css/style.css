@@ -51,7 +51,8 @@ body {
     width: 100%;
     min-height: 100%;
     z-index: 9999999;
-    overflow: scroll !important;
+    overflow-y: scroll !important;
+    overflow-x:hidden !important;
     height: auto;
     background: #EF6C00;
     padding-bottom: 40px;
