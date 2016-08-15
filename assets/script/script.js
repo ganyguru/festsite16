@@ -391,8 +391,7 @@ previousPageVerticalPosition=0;
 			$("#clusterform").show();
 			mummified=1;
 		}
-		if($("#container").width()/$("#container").height()<1)
-			$(".orientnotif").show();
+		
 		//RightandLeftedge();
 }
 function checkcounter()
