@@ -224,6 +224,13 @@ if(!defined('__PRAGYAN_CMS'))
 		<div class="egyptwall"></div>
 		
 	<div class="rrocks"></div>
+
+	<div id="footer">
+<div class="cover"></div>
+<div class="ftext">
+Made with <font color="red">&hearts;</font> By <a href="http://delta.nitt.edu" style="color:#ff0000" target="_blank">Delta Force</a>. Designed by <a href="http://behance.net/festember" style="color:#ff0000" target="_blank">Design Team</a>.
+</div>
+</div>
 	</div>
 	
 
@@ -244,8 +251,9 @@ if(!defined('__PRAGYAN_CMS'))
 	var newColor = '#'+(0x1000000+(Math.random())*0xffffff).toString(16).substr(1,6);
 $("#clusterform").css({"background-color": newColor}); 
 $(".pharaohm").css({"background-image": "url(<?php echo $TEMPLATEBROWSERPATH; ?>/assets/img/"+pictures[getRandomInt(0,3)]+")"}); 
-$(".info").css({"height":$(document).height()+"px"}); 
+
 $("#clusterform").css({"height":$(document).height()+"px"}); 
+$(".info").css({"height":$(document).height()+"px"}); 
 	$("#pandafall").css({"left":$("#flight").offset().left+0.34*$("#flight").width()});
 	 $(".button-collapse").sideNav();
 </script>

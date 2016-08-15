@@ -12,6 +12,43 @@ body {
     user-select: none;
     overflow:hidden;
 }
+#footer
+{
+font-family:josefin;
+width:100%;
+z-index:100000;
+bottom:0px;
+position:fixed;
+text-align:center;
+color:#000;
+left:0px;
+height:3%;
+font-size:100%;
+}
+#footer .cover
+{
+z-index:100001;
+left:0;
+top:0;
+width:100%;
+position:absolute;
+height:100%;
+background:#fff;
+opacity:0.6;
+}
+#footer .ftext
+{
+z-index:100002;
+position:absolute;
+width:100%;
+left:0;
+text-align:center;
+
+}
+#footer p a 
+{
+color:red;
+}
 .cluster-item
 {
     background: transparent;
