@@ -389,6 +389,8 @@ previousPageVerticalPosition=0;
 		else
 		{
 			$("#clusterform").show();
+			$("#container").hide();
+			$("#page").hide();
 			mummified=1;
 		}
 		

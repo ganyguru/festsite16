@@ -59,8 +59,6 @@ if(!defined('__PRAGYAN_CMS'))
 
 <!--- Fixed Container to have all the elements-->
 
-<div id="container" >
-
 <div id="clusterform" class="form">
 <div class="banner">
 <div class="farcloud loading2"></div>
@@ -86,6 +84,9 @@ if(!defined('__PRAGYAN_CMS'))
 
 </div>
 </div>
+
+<div id="container" >
+
 
 
 
