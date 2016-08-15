@@ -16,6 +16,13 @@ if(!defined('__PRAGYAN_CMS'))
 	<link rel="stylesheet" type="text/css" href="<?php echo $TEMPLATEBROWSERPATH; ?>/assets/css/style.css">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=0">
+	<script type="text/javascript">
+
+		var pictures=["pharaoh.svg","bcastle.svg","clock.svg","eiffel.svg"];
+		function getRandomInt(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+	</script>
 </head>
 <body>
 <nav class="transparent noshadow z-depth-1" style="position:absolute;box-shadow:0 0 0 0;z-index:999999999;">
@@ -53,6 +60,37 @@ if(!defined('__PRAGYAN_CMS'))
 <!--- Fixed Container to have all the elements-->
 
 <div id="container" >
+
+<div id="clusterform" class="form">
+<div class="banner">
+<div class="farcloud loading2"></div>
+<div class="nearcloud loading1"></div>
+<div class="sun"></div>
+<div class="pharaohm"></div>
+  <div class="eyeline1"></div>
+  <div class="eyeline2"></div>
+  <div class="grass"></div>
+  <div class="wrapper"></div>
+  <div class="heading" ><h3>FESTEMBER 2016</h3></div>
+  
+</div>
+<div class="info">
+
+<a href='events'><div class='cluster-item'>E V E N T S</div></a>
+<a href='highlights'><div class='cluster-item'>H I G H L I G H T S</div></a>
+<a href='sponsors'><div class='cluster-item'>S P O N S O R S</div></a>
+<a href='games'><div class='cluster-item'>G A M E S</div></a>
+<a href='hospitality'><div class='cluster-item'>H O S P I T A L I T Y</div></a>
+<a href='contacts'><div class='cluster-item'>C O N T A C T S</div></a>
+
+
+</div>
+</div>
+
+
+
+
+
 <div id="loading" >
 <div id="sun"></div>
 <div id="farcloud" class="loading2"></div>
@@ -187,8 +225,7 @@ if(!defined('__PRAGYAN_CMS'))
 	<div class="rrocks"></div>
 	</div>
 	
-<div class="mobilecontrolleft"></div>
-<div class="mobilecontrolright"></div>
+
 <div class="orientnotif">
 			<div id="supercenter">
 				<center>				
@@ -203,6 +240,11 @@ if(!defined('__PRAGYAN_CMS'))
   <script type="text/javascript" src="<?php echo $TEMPLATEBROWSERPATH; ?>/assets/script/materialize.min.js"></script>
 <script type="text/javascript" src="<?php echo $TEMPLATEBROWSERPATH; ?>/assets/script/script.js"></script>
 <script type="text/javascript">
+	var newColor = '#'+(0x1000000+(Math.random())*0xffffff).toString(16).substr(1,6);
+$("#clusterform").css({"background-color": newColor}); 
+$(".pharaohm").css({"background-image": "url(<?php echo $TEMPLATEBROWSERPATH; ?>/assets/img/"+pictures[getRandomInt(0,3)]+")"}); 
+$(".info").css({"height":$(document).height()+"px"}); 
+$("#clusterform").css({"height":$(document).height()+"px"}); 
 	$("#pandafall").css({"left":$("#flight").offset().left+0.34*$("#flight").width()});
 	 $(".button-collapse").sideNav();
 </script>

@@ -126,7 +126,7 @@ function KeyboardController(keys, repeat) {
 
 KeyboardController({
 	37 : function(){
-		RightandLeftedge()
+		//RightandLeftedge()
 		
 		//if(checkobstacle(-1,0)==1 && canScrollOrSwipe==1)
 		//	{heroback();
@@ -148,7 +148,7 @@ KeyboardController({
 	},
 	
 	39 : function(){
-		RightandLeftedge()
+		//RightandLeftedge()
 		finalcheck(1);
 		//if(checkobstacle(1,0)==1 && canScrollOrSwipe==1 && end==0)
 			//{
@@ -173,55 +173,27 @@ KeyboardController({
 
 
 
-var salpi;
-var sangili;
-
- $(".mobilecontrolright").bind('touchstart mousedown', function(){
- 	if(canScrollOrSwipe==true)
-       salpi=setInterval(rightactions,1);
-   else
-   {
-   	clearInterval(salpi);
-    clearInterval(sangili);
-   }
-    }).bind('touchend mouseup', function(){
-        clearInterval(salpi);
-        clearInterval(sangili);
-        checkcounter();
-    });
-
- $(".mobilecontrolleft").bind('touchstart mousedown', function(){
- 	if(canScrollOrSwipe==true)
-       sangili=setInterval(leftactions,1);
-   else
-   {
-   	clearInterval(salpi);
-    clearInterval(sangili);
-   }
-    }).bind('touchend mouseup', function(){
-    	clearInterval(salpi);
-        clearInterval(sangili);
-        checkcounter();
-    });
-
-
 
 function leftactions()
 {
-    RightandLeftedge()
-        
+   // RightandLeftedge()
+        if(canScrollOrSwipe==true)
+	{
         heroback();          	
             	
             if(boatified!=1)
             MoveHeroBack();
-            if(mummified!=1)
-                checkDragon();
+    }
+            /*if(mummified!=1)
+            //    checkDragon();
             if(boatified!=1)
-                checkBoat();
+              //  checkBoat();
             if(kaakafied!=1)
-                checkKaaka();
-            
+                //checkKaaka();
+            */
            // backtransitions();
+            	clearInterval(salpi);
+    clearInterval(sangili);
         
 
 }
@@ -229,24 +201,29 @@ function leftactions()
 function rightactions()
 {
 
-    RightandLeftedge()
+   // RightandLeftedge()
         finalcheck(1);
+        if(canScrollOrSwipe==true)
+	{
         if(end==0)
             herofront();
             
             if(boatified!=1)
             MoveHeroFront();
-            if(mummified!=1)
-                checkDragon();
+    }
+            /*if(mummified!=1)
+              //  checkDragon();
             if(boatified!=1)
-                checkBoat();
+            //    checkBoat();
             if(kaakafied!=1)
-                checkKaaka();
+              //  checkKaaka();
             if(football!=1)
-                checkBall();
+                //checkBall();
             if(manhole!=1)
-                checkHole();
+                //checkHole();*/
             fronttransitions();
+             	clearInterval(salpi);
+    clearInterval(sangili);
         
     
 }
@@ -256,7 +233,7 @@ function finalcheck(i)
 
 if(i>0)
 {
-	if($(".nittree").offset().left+$(".nittree").width()+i<$("#container").width() )
+	if($(".nittree").offset().left+$(".nittree").width()+i<$("#container").width() && $(heroDiv).offset().left+$(heroDiv).width()+herowidth/2>=$("#container").width()/2)
 		end=1;
 	else
 		end=0;
@@ -407,16 +384,16 @@ previousPageVerticalPosition=0;
 		setElementProperties();
 		if(deviceName=="computer")
 		{
-			$(".mobilecontrolright").hide();
-			$(".mobilecontrolleft").hide();
+			
 		}
 		else
 		{
+			$("#clusterform").show();
 			mummified=1;
 		}
 		if($("#container").width()/$("#container").height()<1)
 			$(".orientnotif").show();
-		RightandLeftedge();
+		//RightandLeftedge();
 }
 function checkcounter()
 {
@@ -831,7 +808,7 @@ function herofront()
 {
 	if(canScrollOrSwipe==true)
 	{
-	if($(heroDiv).offset().left+$(heroDiv).width()+37.5<$("#container").width()/2)
+	if($(heroDiv).offset().left+$(heroDiv).width()+herowidth/2<$("#container").width()/2)
 	{
 		if(boatified!=1)
 			$(heroDiv).css({'left':(heroDiv.offsetLeft+1)});
@@ -939,15 +916,7 @@ var DrawEye = function(eyecontainer, pupil, eyeposx, eyeposy, eyer){
     
     
     
-   var pupil = $(pupil);
-  var xp = center.x, yp = center.y;
-  var loop = setInterval(function(){
-    // change 1 to alter damping/momentum - higher is slower
-    xp += (x - xp) / 1;
-    yp += (y - yp) / 1;
-    pupil.css({left:xp, top:yp});    
-  }, 1);
-
+  
     
   
 } 
@@ -958,14 +927,4 @@ var DrawEye = function(eyecontainer, pupil, eyeposx, eyeposy, eyer){
    
 
 
-
-  // Update pupil location
-  var pupil = $(pupil);
-  var xp = center.x, yp = center.y;
-  var loop = setInterval(function(){
-    // change 1 to alter damping/momentum - higher is slower
-    xp += (mouseX - xp) / 1;
-    yp += (mouseY - yp) / 1;
-    pupil.css({left:xp, top:yp});    
-  }, 1);
 };
