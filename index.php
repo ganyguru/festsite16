@@ -71,10 +71,11 @@ if(!defined('__PRAGYAN_CMS'))
 	
 	<div id="layer-3" class="layer">		
 	
-	<div class="chinawall"></div>
+	
 	
 	</div>
 		<div id="layer-7" class="layer">
+		<div class="chinawall"></div>
 	<div class="nitsky"></div>
 	<div class="rockfort"></div>
 	<a href="sponsors"><div class="blimp shake1"></div></a>

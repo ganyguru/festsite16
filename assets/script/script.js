@@ -167,7 +167,7 @@ KeyboardController({
 				checkBall();
 			if(manhole!=1)
 				checkHole();
-			//fronttransitions();
+			fronttransitions();
 		//}
 	}},1);
 
@@ -177,7 +177,13 @@ var salpi;
 var sangili;
 
  $(".mobilecontrolright").bind('touchstart mousedown', function(){
+ 	if(canScrollOrSwipe==true)
        salpi=setInterval(rightactions,1);
+   else
+   {
+   	clearInterval(salpi);
+    clearInterval(sangili);
+   }
     }).bind('touchend mouseup', function(){
         clearInterval(salpi);
         clearInterval(sangili);
@@ -185,7 +191,13 @@ var sangili;
     });
 
  $(".mobilecontrolleft").bind('touchstart mousedown', function(){
+ 	if(canScrollOrSwipe==true)
        sangili=setInterval(leftactions,1);
+   else
+   {
+   	clearInterval(salpi);
+    clearInterval(sangili);
+   }
     }).bind('touchend mouseup', function(){
     	clearInterval(salpi);
         clearInterval(sangili);
@@ -358,6 +370,7 @@ function loadingout()
 			$("#pandafall").addClass("fallground");
 			$(".layer").addClass("groundup");
 			setTimeout(function(){
+				$("#pandafall").css({"display":"none"});
 				$("#hero-block").show();
 			},540);
 			
@@ -379,11 +392,7 @@ window.onload = function()
 	console.log($("#hero").height());
 	$("#hero").css({"background-size":12*$("#hero").width()+"px "+2*$("#hero").height()+"px"});
 	$(".hero-block").css({"margin-left":-1*$("#hero").width+"px"});
-	for(m=0;m<=11;m++)
-	{
-		$(".fhero"+(m+1)).css({"background-position":-1*(m+1)*$("#hero").width()+"px 0px !important"});
-		$(".bhero"+(12-m)).css({"background-position":-1*(m+1)*$("#hero").width()+"px "+-1*$("#hero").height()+"px !important"});
-	}
+	
 	setTimeout(function(){
 		loadingout();
 		
@@ -400,6 +409,10 @@ previousPageVerticalPosition=0;
 		{
 			$(".mobilecontrolright").hide();
 			$(".mobilecontrolleft").hide();
+		}
+		else
+		{
+			mummified=1;
 		}
 		if($("#container").width()/$("#container").height()<1)
 			$(".orientnotif").show();
@@ -566,12 +579,14 @@ function checkBoat()
 	{
 		
 		
+
 		//canScrollOrSwipe=false;
 		boatified=1;
 	}
 }
 function checkBoatBack()
 {
+	
 	if($("#hero-block").offset().left+herowidth> $(".rrocks").offset().left+0.5*$(".rrocks").width() && ($("#hero-block").offset().left+$("#hero-block").width()+3<$(".wstep").offset().left) )
 	{		
 		boatified=1;
@@ -582,6 +597,7 @@ function checkBoatBack()
 
 function checkKaaka()
 {
+	
 	if($("#hero-block").offset().left+92> $(".kaaka").offset().left)
 	{
 		//$("#hero-block").fadeOut();
@@ -592,6 +608,7 @@ function checkKaaka()
 }
 function kaakaflying()
 {
+	
 	canScrollOrSwipe=false;
 	var j=0;
 	$(".kaaka").stop().animate({bottom:parseInt($(".pharaoh").css("bottom"),10)+0.42*$(".pharaoh").height()+"px",left:parseInt($(".pharaoh").css("left"),10)+0.74*$(".pharaoh").width()+"px"},3000,function(){
@@ -609,6 +626,7 @@ function kaakaflying()
 }
 function savapatti()
 {
+	
 	canScrollOrSwipe=false;
 	$(".fire").show();
 	//setTimeout(function(){$("#ash").fadeOut();},1000);
@@ -624,6 +642,7 @@ function savapatti()
        backgroundColor:"white"
     }, { duration: 3000, queue: false });
 	 	var inter=setInterval(function(){
+	 	
 			if($(".opentomb").offset().left>$(".opentomb").width()+5)
 			{						
 				layerautomove();				
@@ -644,9 +663,9 @@ function savapatti()
 							$("#hero-block").show();
 							$("#hero-block").css({"left":$(".opentomb").offset().left+0.5*$(".opentomb").width()+"px"});
 							$("#hero-block").hide();
-							$("#hero-block").fadeIn();
+							$("#hero-block").fadeIn("400",function(){canScrollOrSwipe=true;});
 							mummified=1;
-							canScrollOrSwipe=true;
+							
 							$(".fire").hide();
 						});
 					},1600)
@@ -732,59 +751,6 @@ function addObstacles()
 		obstacles.push($(".obstacles")[i]);
 
 }
-function selectObstacles()
-{
-	var endobstacle;
-	var startobstacle;
-	if(obstacleendindex<0 && obstaclestartindex<0)
-	{
-		currentobstacles.push($(obstacles[0]));
-		obstaclestartindex=0;
-		obstacleendindex=0;
-	}
-	
-	if(deltaPageVerticalPosition>0)
-	{
-		endobstacle=$(obstacles[obstacleendindex+1]);
-		startobstacle=$(obstacles[obstaclestartindex]);
-
-		if(obstacleendindex<obstacles.length-1)
-		if((endobstacle.offset().left+endobstacle.width())>0 && endobstacle.offset().left<$("#container").width())
-		{
-			currentobstacles.push(endobstacle);
-			obstacleendindex++;
-			if(obstaclestartindex<0)
-				obstaclestartindex=0;
-		}
-		
-		if(obstaclestartindex>=0)
-		if(startobstacle.offset().left+startobstacle.width()<0)
-		{
-			currentobstacles.shift();
-			obstaclestartindex++;
-		}
-		//console.log(currentobstacles);
-	}
-	else if(deltaPageVerticalPosition<0)
-	{
-		endobstacle=$(obstacles[obstacleendindex+1]);
-		startobstacle=$(obstacles[obstaclestartindex-1]);
-		if(obstaclestartindex>0)
-		if((startobstacle.offset().left+startobstacle.width())>0 && startobstacle.offset().left<$("#container").width())
-		{
-			currentobstacles.unshift(startobstacle);
-			obstaclestartindex--;
-		}
-
-
-		if(obstacleendindex<obstacles.length-1 && obstacleendindex>0)
-		if(endobstacle.offset().left+endobstacle.width()>$("#container").width())
-		{
-			currentobstacles.pop();
-			obstacleendindex--;
-		}
-	}
-}
 function transitions()
 {
 	if ( (pageVerticalPosition+10 > 1600))
@@ -824,75 +790,17 @@ function setPageHeight()
 }
 function moveLayers()
 {
-	for (var i=0; i<divArray.length; i++)
-		{
-	//	i=2;
-			divArray[i].style.left = (-1.2 * speedArray[i] * pageVerticalPosition) + "px";
-			if(boatified==1 && i==2 && deltaPageVerticalPosition>0)
+	//for (var i=0; i<divArray.length; i++)
+	//	{
+	i=2;
+			divArray[2].style.left = (-1.2 * speedArray[2] * pageVerticalPosition) + "px";
+			if(boatified==1 && deltaPageVerticalPosition>0)
 			{
 				$(heroDiv).css({'left':($(".boat").offset().left+0.5*$(".boat").width()+"px")});
 			}
-		}
-}
-function handleStart(e)
-{
-	//disable preventDefault() on touchstart so url will still be clickable
-	//e.preventDefault();
-	
-	touchStartX = e.targetTouches[0].pageX;
-	pageVerticalPositionOnTouch = pageVerticalPosition;
+	//	}
 }
 
-function handleMove(e)
-{
-	e.preventDefault();
-	touchCurrentX = e.targetTouches[0].pageX;
-	
-	if (canScrollOrSwipe == true) //to avoid user swipe when window is still resizing after screen orientation changed on table
-	{
-		detectPageVerticalPosition();
-		AllFunctions();
-	}
-}
-
-function handleEnd(e)
-{
-	e.preventDefault();
-	touchEndX = e.changedTouches[0].pageX;
-}
-
-function detectPageVerticalPosition()
-{
-	previousPageVerticalPosition = pageVerticalPosition;
-	
-	if (deviceName == "computer")
-	{	
-		if (browserName == "internet explorer")
-		{
-			pageVerticalPosition = document.documentElement.scrollTop;
-		}
-		else
-		{
-			pageVerticalPosition = screenspeed*pageYOffset;
-		}
-	}
-	else //mobile
-	{
-		pageVerticalPosition = pageVerticalPositionOnTouch + (touchStartX - touchCurrentX);
-	
-		if (pageVerticalPosition < 0)
-		{
-			pageVerticalPosition = 0;
-		}
-		if (pageVerticalPosition > pageDiv.offsetHeight - containerDiv.offsetHeight)
-		{
-			pageVerticalPosition = pageDiv.offsetHeight - containerDiv.offsetHeight;
-		}
-	}
-	
-	deltaPageVerticalPosition = pageVerticalPosition - previousPageVerticalPosition;
-	
-}
 function heroback()
 {
 	if($(heroDiv).offset().left>$(".boat").width()/2)
@@ -902,7 +810,7 @@ function heroback()
 		else if(boatified==1 && $(".boat").offset().left-10>$(".rrocks").offset().left+0.5*$(".rrocks").width())
 		{
 			$("#hero").css({"background-position":-1*(12-herocounter)*$("#hero").width()+"px "+0*$("#hero").height()+"px"});	
-			$(".boat").css({'left':(parseInt($(".boat").css("left"),10)-1+"px")});
+			$(".boat").css({'left':(parseInt($(".boat").css("left"),10)-1.2+"px")});
 			$(heroDiv).css({'left':(heroDiv.offsetLeft-1)});
 		}
 	}
@@ -931,7 +839,7 @@ function herofront()
 		{
 			$("#hero").css({"background-position":-1*(12-herocounter)*$("#hero").width()+"px "+-1*$("#hero").height()+"px"});	
 			
-			$(".boat").css({'left':(parseInt($(".boat").css("left"),10)+1)});
+			$(".boat").css({'left':(parseInt($(".boat").css("left"),10)+1.2)});
 			$(heroDiv).css({'left':(heroDiv.offsetLeft+1)});
 			if(($(".boat").offset().left+$(".boat").width()>$(".wstep").offset().left+$(".wstep").width()/2))
 			{
@@ -971,120 +879,6 @@ function herojump()
 }
          
 }
-function jumpup()
-{
-	jumpon=1;
-	var x,up;	
-	anim1=requestAnimationFrame(jumpup);
-	if(anim==0)
-		sandi=parseInt($(".hero-block").css('bottom'),10);
-	anim++;
-	//console.log(anim);
-	if(deltaPageVerticalPosition>0)
-		x=1;
-	else
-		x=-1;
-	var height=$(".hero-block").height();
-	var herotop=$("#container").height()-parseInt($(".hero-block").css('bottom'),10)-height;
-	if(anim<(h/2)+1)
-		up=1;
-	else
-		up=0;
-	if(anim<=h)
-	{
-		//console.log(parseInt($(".hero-block").css('bottom'),10));
-		RightandLeftedge();
-
-		if(checkobstacle(x,Number(sandi) + (-0.1 * anim * (anim - h)) -parseInt($(".hero-block").css('bottom'),10)+2 )==0)
-		{
-			if(up==0 && (herotop+height)>(selectedObstacle.offset().top-pageYOffset) && heroRightEdge+1 > selectedObstacle.offset().left )
-			{
-
-				//console.log((herotop+height)+","+(selectedObstacle.offset().top-pageYOffset));
-				$(heroDiv).css({'bottom': $("#container").height()-selectedObstacle.offset().top+pageYOffset+1 + 'px'});		
-				cancelAnimationFrame(anim1);
-				sandi=parseInt($(".hero-block").css('bottom'),10);
-				anim=0;
-			}
-			else if(up==1 && (herotop)>(selectedObstacle.offset().top-pageYOffset+selectedObstacle.height()))
-			{
-				//console.log($(".hero-block").css('bottom')+" , "+($("#container").height()-selectedObstacle.offset().top+pageYOffset));
-				anim=h-anim;
-				$(heroDiv).css({'bottom': Number(sandi) + (-0.1 * anim * (anim - h)) + 'px'});
-			}
-			else
-			{
-				$(heroDiv).css({'bottom': Number(sandi) + (-0.1 * anim * (anim - h)) + 'px'});
-			}
-			jumpon=0;
-		
-		}
-		else
-    	$(heroDiv).css({'bottom': Number(sandi) + (-0.1 * anim * (anim - h)) + 'px'});
-
-	}
-      else
-    {
-    	jumpon=0;
-    	cancelAnimationFrame(anim1);
-    	sandi=parseInt($(".hero-block").css('bottom'),10);
-    	anim=0;
-    	checkfall();
-    }   
-             	
-}
-function checkobstacle(x,y)
-{
-	var pests=[];
- 		pests.push($(".obstacles"));
- 	var error=1;
- 		//pests.push($(".cod"));
- 		var height=$(".hero-block").height();
- 	var width=$(".hero-block").width();
- 	var hero=$(".hero-block").offset();
- 	//console.log();
- 	var herotop=$("#container").height()-parseInt($(".hero-block").css('bottom'),10)-height;
- 	for(i=0;i<currentobstacles.length;i++)
-	if (!((heroLeftEdge+x > $(currentobstacles[i]).offset().left + $(currentobstacles[i]).width()) || (heroRightEdge+x < $(currentobstacles[i]).offset().left) || herotop-y > $(currentobstacles[i]).offset().top + $(currentobstacles[i]).height()-pageYOffset || herotop + height-y < $(currentobstacles[i]).offset().top-pageYOffset ))
- 		{
- 			error=0;
- 			selectedObstacle=currentobstacles[i];
- 			break;
- 		}
- 		return error;
-
-}
-function topobstaclecheck()
-{
-	var height=$(".hero-block").height();
-	var herotop=$("#container").height()-parseInt($(".hero-block").css('bottom'),10)-height;
-	if((herotop+height)<(selectedObstacle.offset().top-pageYOffset)  &&   ((heroLeftEdge > selectedObstacle.offset().left + selectedObstacle.width()) || (heroRightEdge < selectedObstacle.offset().left)) && jumpon==0)
-		return 1;
-	else
-		return 0;
-
-}
-
-function checkfall()
-{
-	var x;
-	var top=topobstaclecheck();
-	var height=$(".hero-block").height();
-	var herotop=$("#container").height()-parseInt($(".hero-block").css('bottom'),10)-height;
-	if(deltaPageVerticalPosition>0)
-		x=1;
-	else
-		x=-1;
-	
-	if(top==1 && sandi!=0.05*$("#container").height()+40)
-	{
-		
-		anim=41;
-		sandi=0.05*$("#container").height()+40;
-		jumpup();
-	}
-}
-
 
 
 var DrawEye = function(eyecontainer, pupil, eyeposx, eyeposy, eyer){
