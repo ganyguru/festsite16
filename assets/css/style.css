@@ -18,15 +18,26 @@ body {
     right: 30px;
     bottom:22px;
     background:#000!important;
-    
+
+}
+.actions
+{
+      position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  width: 0px;
+  height: 50%;
 }
 .overlay
 {
-    z-index: 9999;
+     z-index: 9999;
     background-color: #000;
     width: 100%;
     height: 100%;
-    position: absolute;
+    position: fixed;
     top:0;
     left:0;
     display: none;
@@ -51,17 +62,18 @@ body {
 }
 .holder
 {
-    opacity: 1;
-    z-index: 999999;
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom:0;
-    margin: auto;
-    display: none;
-    height: 50%;
-    width: 0px;
+      opacity: 1;
+  z-index: 999999;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow: auto;
+  width: 100%;
+  margin: auto;
+  display: none;
+  height: 100%;
 }
 .cms-actionbarModuleItem,.cms-actionbarPageItem 
 {

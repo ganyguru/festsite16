@@ -271,7 +271,7 @@ $("#clusterform").css({"height":$(document).height()+"px"});
 $(".info").css({"height":$(document).height()+"px"}); 
 	$("#pandafall").css({"left":$("#flight").offset().left+0.34*$("#flight").width()});
 	 $(".button-collapse").sideNav();
-	 
+
 	 $(".login").click(function()
   {
     $("body").css({'overflow':'hidden'});
@@ -281,7 +281,7 @@ $(".info").css({"height":$(document).height()+"px"});
   $("#container").css({'-webkit-filter': 'blur(5px)','-moz-filter': 'blur(5px)','-o-filter': 'blur(5px)', '-ms-filter': 'blur(5px)','filter': 'blur(5px)'});
     });
   
-  $(".overlay").click(function()
+  $(".overlay,.holder").click(function()
   {
   	canScrollOrSwipe=1;
     $("body").css({'overflow':'auto'});
