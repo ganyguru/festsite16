@@ -25,6 +25,7 @@ if(!defined('__PRAGYAN_CMS'))
 	</script>
 </head>
 <body>
+  
 <nav class="transparent noshadow z-depth-1" style="position:absolute;box-shadow:0 0 0 0;z-index:999999999;">
 	<ul id="slide-out" class="side-nav">
 		<li>
@@ -105,7 +106,7 @@ if(!defined('__PRAGYAN_CMS'))
 <div class="sky2"></div>
 		<div id="layer-1" class="layer">
 		
-		<div class="castle"></div>
+		
 	</div>
 	
 	<div id="layer-3" class="layer">		
@@ -114,6 +115,7 @@ if(!defined('__PRAGYAN_CMS'))
 	
 	</div>
 		<div id="layer-7" class="layer">
+		<div class="castle"></div>
 		<div class="chinawall"></div>
 	<div class="nitsky"></div>
 	<div class="rockfort"></div>
@@ -233,7 +235,7 @@ Made with <font color="red">&hearts;</font> By <a href="http://delta.nitt.edu" s
 </div>
 	</div>
 	
-
+ 
 <div class="orientnotif">
 			<div id="supercenter">
 				<center>				
@@ -242,6 +244,19 @@ Made with <font color="red">&hearts;</font> By <a href="http://delta.nitt.edu" s
 			</div>
 		</div>
 </div>
+
+<div class="overlay ease">
+
+
+    </div>
+    <div class="holder ease">
+      <div class='actions'>
+        <?php echo $ACTIONBARMODULE; ?>
+        <?php echo $ACTIONBARPAGE; ?> 
+        
+      </div>
+    </div>
+    <a class="btn-floating btn-large waves-effect waves-light red login" style="z-index:999999;"><i class="material-icons">add</i></a>
 <script type="text/javascript" src="<?php echo $TEMPLATEBROWSERPATH; ?>/assets/script/detect-browser-device.js"></script>
 	<script type="text/javascript" src="<?php echo $TEMPLATEBROWSERPATH; ?>/assets/script/jquery.js"></script>
 	<script type="text/javascript" src="<?php echo $TEMPLATEBROWSERPATH; ?>/assets/script/jquery-ui.min.js"></script>
@@ -256,6 +271,24 @@ $("#clusterform").css({"height":$(document).height()+"px"});
 $(".info").css({"height":$(document).height()+"px"}); 
 	$("#pandafall").css({"left":$("#flight").offset().left+0.34*$("#flight").width()});
 	 $(".button-collapse").sideNav();
+	 
+	 $(".login").click(function()
+  {
+    $("body").css({'overflow':'hidden'});
+  $(".overlay").show();
+  $(".holder").show();
+  canScrollOrSwipe=0;
+  $("#container").css({'-webkit-filter': 'blur(5px)','-moz-filter': 'blur(5px)','-o-filter': 'blur(5px)', '-ms-filter': 'blur(5px)','filter': 'blur(5px)'});
+    });
+  
+  $(".overlay").click(function()
+  {
+  	canScrollOrSwipe=1;
+    $("body").css({'overflow':'auto'});
+  $(".overlay").hide();
+  $(".holder").hide();
+  $("#container").css({'-webkit-filter': 'blur(0px)','-moz-filter': 'blur(0px)','-o-filter': 'blur(0px)', '-ms-filter': 'blur(0px)','filter': 'blur(0px)'});
+    });
 </script>
 </body>
 </html>

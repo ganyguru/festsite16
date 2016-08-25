@@ -391,6 +391,7 @@ previousPageVerticalPosition=0;
 			$("#clusterform").show();
 			$("#container").hide();
 			$("#page").hide();
+			$(".button-collapse").hide();
 			mummified=1;
 		}
 		
@@ -657,7 +658,8 @@ function savapatti()
 }
 function MoveHeroBack()
 {
-
+	if(canScrollOrSwipe)
+{
 	heroforward=0;
 	var pos=0;
 	
@@ -686,7 +688,7 @@ function MoveHeroBack()
 
 	$("#hero").css({"background-position":-1*(herocounter-1)*$("#hero").width()+"px "+0+"px"});	
 	
-
+}
 }
 function MoveHeroFront()
 {
@@ -781,6 +783,8 @@ function moveLayers()
 
 function heroback()
 {
+	if(canScrollOrSwipe)
+	{
 	if($(heroDiv).offset().left>$(".boat").width()/2)
 	{
 		if(boatified!=1)
@@ -804,6 +808,7 @@ function heroback()
 
 		moveLayers();
 	}
+}
 }
 function herofront()
 {
