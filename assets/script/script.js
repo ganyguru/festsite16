@@ -369,7 +369,7 @@ window.onload = function()
 	console.log($("#hero").height());
 	$("#hero").css({"background-size":12*$("#hero").width()+"px "+2*$("#hero").height()+"px"});
 	$(".hero-block").css({"margin-left":-1*$("#hero").width+"px"});
-	
+	$("#hero").css({"background-position":-1*(11)*$("#hero").width()+"px "+-1*$("#hero").height()+"px"});	
 	setTimeout(function(){
 		loadingout();
 		
