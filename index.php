@@ -10,7 +10,19 @@ if(!defined('__PRAGYAN_CMS'))
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Festember 2016</title>
+	<title>Festember 2016 - The National Level Cultural Festival of National Institute of Technology, Tiruchirappalli.</title>
+	<meta name="description" content='Festember is the inter college cultural, literary and arts extravaganza of NIT, Trichy held in the month of September. Misconstrued as a "fest in September", the actual origins of Festember is "a fest to remember".'>
+	<link rel="author" href="https://plus.google.com/111641026783625225426"/>
+	<meta property="og:title" content=”"Festember 2016 - The National Level Cultural Festival of NITT"/>
+	<meta property="og:type" content='website'/>
+	<meta property="og:image" content="<?php echo $TEMPLATEBROWSERPATH; ?>/assets/image/logo.png"/>
+	<meta property="og:url" content="https://www.festember.com"/>
+	<meta property="og:description" content='Festember is the inter college cultural, literary and arts extravaganza of NIT, Trichy held in the month of September. Misconstrued as a "fest in September", the actual origins of Festember is "a fest to remember".'/>
+	<meta property="fb:admins" content="festember"/>
+
+
+
+
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
       <link type="text/css" rel="stylesheet" href="<?php echo $TEMPLATEBROWSERPATH; ?>/assets/css/materialize.min.css"  media="screen,projection"/>
 	<link rel="stylesheet" type="text/css" href="<?php echo $TEMPLATEBROWSERPATH; ?>/assets/css/style.css">
