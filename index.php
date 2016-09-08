@@ -45,9 +45,25 @@ if(!defined('__PRAGYAN_CMS'))
   ga('send', 'pageview');
 
 </script>
+<style type="text/css">
+	.twitter-follow-button
+	{
+		position: absolute !important;
+		bottom: 50px;
+		left: 20px;
+	}
+</style>
 </head>
 <body>
-  
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.7&appId=300671323448023";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
 <nav class="transparent noshadow z-depth-1" style="position:absolute;box-shadow:0 0 0 0;z-index:999999999;">
 	<ul id="slide-out" class="side-nav">
 		<li>
@@ -67,7 +83,7 @@ if(!defined('__PRAGYAN_CMS'))
 		<li><a href="https://festember.com/16/home/hospitality">Hospitality</a>
 		</li>
 		<li><a href="https://festember.com/16/home/contacts">Contacts</a>
-		</li>
+		
 	</ul> <a href="#" data-activates="slide-out" class="button-collapse" style="position:fixed;display:block !important;"><i class="material-icons" style="color:white;opacity:0.7">menu</i></a> </nav>
 
 <script type="text/javascript">
@@ -279,11 +295,15 @@ Made with <font color="red">&hearts;</font> By <a href="http://delta.nitt.edu" s
       </div>
     </div>
     <a class="btn-floating btn-large waves-effect waves-light red login" style="z-index:999999;"><i class="material-icons">add</i></a>
+    <a href="https://twitter.com/festember" class="twitter-follow-button" data-show-count="false" style="position:absolute;bottom:30px;left:20px;">Follow @festember</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+    <div class="fb-like" data-href="https://facebook.com/festember" data-width="100px" style="position:absolute;bottom:20px;left:20px;" data-layout="button_count" data-action="like" data-size="small" data-show-faces="false" data-share="true"></div>
+
 <script type="text/javascript" src="<?php echo $TEMPLATEBROWSERPATH; ?>/assets/script/detect-browser-device.js"></script>
 	<script type="text/javascript" src="<?php echo $TEMPLATEBROWSERPATH; ?>/assets/script/jquery.js"></script>
 	<script type="text/javascript" src="<?php echo $TEMPLATEBROWSERPATH; ?>/assets/script/jquery-ui.min.js"></script>
   <script type="text/javascript" src="<?php echo $TEMPLATEBROWSERPATH; ?>/assets/script/materialize.min.js"></script>
 <script type="text/javascript" src="<?php echo $TEMPLATEBROWSERPATH; ?>/assets/script/script.js"></script>
+
 <script type="text/javascript">
 	var newColor = '#'+(0x1000000+(Math.random())*0xffffff).toString(16).substr(1,6);
 $("#clusterform").css({"background-color": newColor}); 
