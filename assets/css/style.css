@@ -60,6 +60,32 @@ body {
     bottom:0;
     margin: auto;
 }
+.cluster-item2
+{
+    background: transparent;
+    border: 3px solid #fff;
+    color: #fff;
+    background: #000;
+    width: 100px;
+    text-align: center;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 15px;
+    height: 30px;
+    line-height: 25px;
+    -webkit-transition: all 0.25s ease-in-out;
+  -moz-transition: all 0.25s ease-in-out;
+  -o-transition: all 0.25s ease-in-out;
+  transition: all 0.25s ease-in-out;
+  margin: 5px;
+}
+
+.cluster-item2:hover
+{
+  border: 3px solid #fff;
+    background: #fff;
+    color: #000;
+}
 .holder
 {
       opacity: 1;

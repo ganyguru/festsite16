@@ -109,7 +109,9 @@ if(!defined('__PRAGYAN_CMS'))
   <div class="grass"></div>
   <div class="wrapper"></div>
   <div class="heading" ><h3>FESTEMBER 2016</h3></div>
-  
+  <a href='https://schedule.festember.com' target="_blank"><div class='cluster-item2' style="position:absolute;bottom:70px;left:20px;">Schedule</div></a>
+  <a href="https://twitter.com/festember" class="twitter-follow-button" data-show-count="false" style="position:absolute;bottom:30px;left:20px;">Follow @festember</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+    <div class="fb-like" data-href="https://facebook.com/festember" data-width="100px" style="position:absolute;bottom:20px;left:20px;" data-layout="button_count" data-action="like" data-size="small" data-show-faces="false" data-share="true"></div>
 </div>
 <div class="info">
 
@@ -295,6 +297,7 @@ Made with <font color="red">&hearts;</font> By <a href="http://delta.nitt.edu" s
       </div>
     </div>
     <a class="btn-floating btn-large waves-effect waves-light red login" style="z-index:999999;"><i class="material-icons">add</i></a>
+    <a href='https://schedule.festember.com' target="_blank"><div class='cluster-item2' style="position:absolute;bottom:70px;left:20px;">Schedule</div></a>
     <a href="https://twitter.com/festember" class="twitter-follow-button" data-show-count="false" style="position:absolute;bottom:30px;left:20px;">Follow @festember</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
     <div class="fb-like" data-href="https://facebook.com/festember" data-width="100px" style="position:absolute;bottom:20px;left:20px;" data-layout="button_count" data-action="like" data-size="small" data-show-faces="false" data-share="true"></div>
 

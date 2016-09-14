@@ -454,7 +454,7 @@ button.big {
     min-height: 100%;
     height: auto;
     background: #EF6C00;
-    padding-bottom: 40px;
+    
 }
 #contactform p{
     color: #000;
@@ -696,13 +696,15 @@ color:white;
 }
 .info
 {
-    position: absolute;
+    position: relative;
     width: 100%;
-    top: 350px;
+    
     text-align: center;
-    height: calc( 100% - 350px);
+   
     background:rgba(0,0,0,0.7);
     padding: 20px;
+    height:auto;
+    min-height: calc(100% - 350px);
 }
 .dataHeader-title {
     position: relative;
@@ -760,6 +762,33 @@ color:white;
 }
 
 .cluster-item:hover
+{
+    background: #fff;
+    color: #000;
+}
+
+
+.cluster-item2
+{
+    background: transparent;
+    border: 2px solid #fff;
+    color: #fff;
+    background: #000;
+    width: 100px;
+    cursor: pointer;
+    display: inline-block;
+    z-index: 99999;
+    text-align: center;
+    height: 30px;
+    line-height: 30px;
+    -webkit-transition: all 0.25s ease-in-out;
+  -moz-transition: all 0.25s ease-in-out;
+  -o-transition: all 0.25s ease-in-out;
+  transition: all 0.25s ease-in-out;
+  margin: 5px;
+}
+
+.cluster-item2:hover
 {
     background: #fff;
     color: #000;
