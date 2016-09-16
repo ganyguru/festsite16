@@ -441,7 +441,7 @@ function setElementProperties()
 	$("#ash").css({"width":1.610*$("#ash").height()+"px","left":parseInt($(".tower").css("left"),10)+940+"px"});
 	$("#ash").hide();
 	
-	$(".backwall").css({"width":23.93*$(".backwall").height(),"left":parseInt($(".towergrass").css("left"),10)+$(".towergrass").width()/2+"px","bottom":0.05*$("#container").height() -50+120-4+"px"});
+	$(".backwall").css({"width":23.93*$(".backwall").height(),"left":parseInt($(".towergrass").css("left"),10)+$(".towergrass").width()/2+"px","bottom":0.05*$("#container").height() -50+120-8+"px"});
 	$(".reception").css({"width":1.428*$(".reception").height(),"left":5.0626*$(".backwall").height()+parseInt($(".backwall").css("left"),10)+"px"});
 	$(".opentomb").css({"width":$(".opentomb").height()*0.566+"px","left":parseInt($(".reception").css("left"),10)-0.05*$("#container").height()-$(".opentomb").height()*0.566+"px"});
 	$(".tombcover").css({"width":$(".tombcover").height()*0.566+"px","left":parseInt($(".opentomb").css("left"),10)-$(".opentomb").width()+"px"})
@@ -465,7 +465,7 @@ function setElementProperties()
 	$(".briver3").css({"width":12.534*$(".briver3").height(),"left":parseInt($(".lighttree").css("left"),10)+$(".lighttree").width()+0.233*$(".backwall").height()+"px","bottom":parseInt($(".briver2").css("bottom"),10)+0.044*$("#container").height()+"px"});
 	$(".boat").css({"width":1.136*$(".boat").height()+"px","left":10+parseInt($(".briver1").css("left"),10)+"px","bottom":0.022*$("#container").height()+"px"});
 	$(".bcastle").css({"width":0.742*$(".bcastle").height()+"px","left":parseInt($(".bridge").css("left"),10)+0.675*($(".bridge").width())+"px","bottom":parseInt($(".backwall").css("bottom"),10)+"px"});
-	$(".highlights").css({"width":4.554*$(".highlights").height()+"px","left":parseInt($(".bridge").css("left"),10)+0.5*($(".bridge").width()-0.5*4.554*$(".highlights").height())+"px","bottom":0.37*$(".bridge").height()+"px"});
+	$(".highlights").css({"width":4.554*$(".highlights").height()+"px","left":parseInt($(".bridge").css("left"),10)+0.5*($(".bridge").width()-0.5*4.554*$(".highlights").height())+"px","bottom":0.41*$(".bridge").height()+"px"});
 	$(".bgrass").css({"width":18.47*$(".bgrass").height()+"px","left":parseInt($(".briver1").css("left"),10)-0.2518*$("#container").height()+"px","bottom":parseInt($(".backwall").css("bottom"),10)-3+"px"});
 	$(".bmountain1").css({"width":3*$(".bmountain1").height()+"px","left":parseInt($(".lighttree").css("left"),10)-2+"px","bottom":parseInt($(".backwall").css("bottom"),10)+$(".backwall").height()-5+"px"});
 	$(".bmountain2").css({"width":3*$(".bmountain2").height()+"px","left":parseInt($(".bmountain1").css("left"),10)+0.333*$("#container").height()+"px","bottom":parseInt($(".backwall").css("bottom"),10)+$(".backwall").height()-5+"px"});

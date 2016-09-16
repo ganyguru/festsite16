@@ -253,7 +253,7 @@ if(!defined('__PRAGYAN_CMS'))
 	<div class="dhead dragonmove"></div>
 	<div class="riverstone"></div>
 <div class="fire naranara"></div>
-
+<a href="sponsors"><div class="blimp shake1"  style="opacity:0"></div></a>
 <div class="boat"></div>
 <div class="briver1 river1move"></div>
 <div class="wstep obstacles"></div>
